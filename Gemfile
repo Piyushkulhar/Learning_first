@@ -72,3 +72,4 @@ gem 'activeadmin'
 gem 'sassc-rails'
 gem 'sassc'
 gem 'active_admin_theme'
+gem 'sidekiq-cron', require: false
