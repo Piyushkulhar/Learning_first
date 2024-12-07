@@ -1,6 +1,7 @@
 ActiveAdmin.register Account do
-  permit_params :first_name, :last_name, :email, :date_of_birth, :image
 
+  permit_params :first_name, :last_name, :email, :date_of_birth, :image
+  
   controller do
     before_action :check_permissions, except: [:index, :show] if -> { current_admin_user.manager? }
 
@@ -33,11 +34,12 @@ ActiveAdmin.register Account do
       f.input :first_name
       f.input :last_name
       f.input :email
-      f.input :date_of_birth
-      f.input :image, as: :file # For image upload
+      f.input :image, as: :file
+      f.input :date_of_birth, as: :datepicker, input_html: { class: 'datepicker', id: 'account_date_of_birth' }
     end
     f.actions
   end
+  
 
   # Customize the index page
   index do
